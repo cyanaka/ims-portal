@@ -19,7 +19,18 @@
 					actionListener="#{mbSaveAudio.add}" oncomplete="disableButtons();" />
 				<p:commandButton widgetVar="deleteButton" value="Excluir"
 					action="#{mbAudio.delete}" update="productDataTable"
-					oncomplete="disableButtons();" />
+					oncomplete="disableButtons();">
+					
+					<p:confirm header="Confirmação" message="Deseja excluir o áudio?"
+						icon="ui-icon-alert"  />
+				</p:commandButton>
+				<p:confirmDialog global="true" showEffect="fade" >
+					<p:commandButton value="Sim" type="button"
+						styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+					<p:commandButton value="Não" type="button"
+						styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+				</p:confirmDialog>
+				
 				<p:commandButton widgetVar="updateButton" value="Alterar"
 					update="productDataTable"
 					action="/pages/admin/audio/addUpdateAudio.faces"
@@ -62,7 +73,7 @@
 						</f:facet>
 						<h:outputText value="#{audio.description}" />
 					</p:column>
-					
+
 					<p:column>
 						<f:facet name="header">
 							<h:outputText value="Path" />

@@ -8,7 +8,11 @@
 	xmlns:p="http://primefaces.org/ui" template="/pages/base/main.xhtml">
 
 	<ui:define name="content">
-		<h:form>
+	
+	
+		<h:form >
+		<p:messages  severity="info" escape="false" showDetail="true" 
+                 autoUpdate="true" closable="true"/>
 			<h:inputHidden value="#{mbSaveAudio.audio.id}" />
 			
 			<p:panelGrid columns="2">
@@ -33,7 +37,10 @@
 
 				<p:outputLabel value="Versão: " />
 				<p:inputText value="#{mbSaveAudio.audio.versionid}" />
-
+				<h:form enctype="multipart/form-data">
+					<p:fileUpload fileUploadListener="#{mbSaveAudio.doUpload}"
+						showButtons="false" label="Procurar..." auto="true" />
+				</h:form>
 				<f:facet name="footer">
 					<p:row>
 						<p:outputPanel style="width: 100%; text-align:center"
